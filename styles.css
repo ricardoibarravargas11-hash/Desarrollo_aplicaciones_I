@@ -1,0 +1,122 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f7f3f5;
+}
+
+/* NAVBAR */
+nav {
+  background: #6b0f1a;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.nav-links a, .btn-semanas {
+  color: white;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background: #800f2f;
+  top: 30px;
+  border-radius: 8px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 60px;
+  background: linear-gradient(#6b0f1a, #a4161a);
+  color: white;
+}
+
+.hero img {
+  width: 100px;
+}
+
+/* BOTONES */
+.btn-primary {
+  background: white;
+  color: #6b0f1a;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.btn-outline {
+  border: 1px solid white;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+/* CARDS */
+.cards-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* SEMANAS */
+.semanas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 40px;
+}
+
+.semana-card {
+  background: #a4161a;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* FOOTER */
+footer {
+  background: #6b0f1a;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}

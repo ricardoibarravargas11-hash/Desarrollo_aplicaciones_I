@@ -1,0 +1,104 @@
+/* =========================================
+   home.css — Estilos de la página Inicio
+   ========================================= */
+
+.home-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 60px);
+  padding: 2rem;
+  width: 100%;
+}
+
+.hero-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 3rem 3.5rem;
+  max-width: 680px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(139,26,42,0.2),
+              inset 0 0 40px rgba(139,26,42,0.05);
+  animation: fadeIn 0.7s ease;
+}
+
+/* línea inferior decorativa */
+.hero-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent2), var(--accent3), transparent);
+}
+
+/* brillo esquina superior derecha */
+.hero-card::after {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139,26,42,0.15), transparent 70%);
+  pointer-events: none;
+}
+
+/* UPLA brand — lado a lado */
+.hero-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 2rem;
+}
+
+.hero-hex { width: 70px; height: 70px; flex-shrink: 0; }
+
+.upla-text-block { text-align: left; }
+
+.upla-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--accent2);
+  letter-spacing: 3px;
+  line-height: 1;
+  text-shadow: 0 0 20px var(--glow);
+}
+
+.upla-sub {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+/* título y descripción */
+.hero-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--text);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.hero-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 auto 2rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}

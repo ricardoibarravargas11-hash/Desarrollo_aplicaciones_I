@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Semana 5 — Ibarra Vargas Ricardo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark:    #0f0608;
+      --bg-card:    #1a0b0e;
+      --accent:     #8b1a2a;
+      --accent2:    #c0243a;
+      --accent3:    #e83a54;
+      --gold:       #d4a853;
+      --text:       #f0dde0;
+      --text-muted: #9e7a80;
+      --border:     #3d1520;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text);
+      min-height: 100vh;
+      background-image:
+        radial-gradient(ellipse at 10% 20%, rgba(139,26,42,0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 80%, rgba(139,26,42,0.10) 0%, transparent 50%);
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 60px;
+      background: rgba(15,6,8,0.95);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo-hex { width: 30px; height: 30px; }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent3); }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      padding: 1rem 3rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-family: 'Rajdhani', sans-serif;
+      letter-spacing: 0.5px;
+    }
+    .breadcrumb a { color: var(--accent3); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 6px; }
+
+    /* MAIN */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem 2rem 4rem;
+    }
+
+    /* HEADER DE SEMANA */
+    .semana-header {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem 2.5rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .semana-header::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent2), var(--accent3), transparent);
+    }
+
+    .semana-tag {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      padding: 3px 10px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .semana-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .semana-unidad {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    /* SECCIONES */
+    .section-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.8rem 2.2rem;
+      margin-bottom: 1.5rem;
+      animation: fadeIn 0.6s ease;
+    }
+
+    .section-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--accent3);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ARCHIVOS */
+    .file-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .file-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.75rem 1rem;
+      background: rgba(139,26,42,0.08);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    .file-item:hover {
+      border-color: var(--accent2);
+      background: rgba(139,26,42,0.18);
+    }
+
+    .file-icon { font-size: 1.2rem; flex-shrink: 0; }
+
+    .file-name {
+      flex: 1;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .file-link {
+      text-decoration: none;
+      color: var(--accent3);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+    }
+    .file-link:hover { color: #ff6b82; }
+
+    /* DESCRIPCIÓN */
+    .desc-text {
+      color: var(--text-muted);
+      font-size: 0.93rem;
+      line-height: 1.75;
+    }
+
+    .desc-text strong { color: var(--accent3); }
+
+    /* VACÍO PLACEHOLDER */
+    .empty-note {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-style: italic;
+      text-align: center;
+      padding: 1.5rem 0;
+    }
+
+    /* BACK */
+    .back-row {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+
+    .back-link {
+      color: var(--accent3);
+      text-decoration: none;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #ff6b82; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a class="nav-brand" href="../index.html">
+      <svg class="nav-logo-hex" viewBox="0 0 40 46" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="20,1 38,11 38,35 20,45 2,35 2,11"
+                 fill="#1565c0" stroke="#1e88e5" stroke-width="1.5"/>
+        <text x="20" y="29" font-family="Rajdhani,sans-serif"
+              font-size="13" font-weight="700" fill="white" text-anchor="middle">IV</text>
+      </svg>
+      Ibarra Vargas Ricardo
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Inicio</a></li>
+      <li><a href="../index.html#tareas">Tareas</a></li>
+      <li><a href="../index.html#perfil">Perfil</a></li>
+      <li><a href="../index.html#info">Información</a></li>
+    </ul>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="../index.html">Inicio</a>
+    <span>›</span>
+    <a href="../index.html">Tareas</a>
+    <span>›</span>
+    Semana 5
+  </div>
+
+  <!-- CONTENIDO -->
+  <main>
+
+    <!-- Cabecera de semana -->
+    <div class="semana-header">
+      <div class="semana-tag">Semana 5</div>
+      <div class="semana-title">SEMANA 5</div>
+      <div class="semana-unidad">📁 UNIDAD II: Componentes de una Aplicación</div>
+    </div>
+
+    <!-- Descripción de la práctica -->
+    <div class="section-card">
+      <div class="section-title">📝 Descripción</div>
+      <p class="desc-text">
+        <!-- ✏️ EDITA AQUÍ: escribe de qué trata la práctica de esta semana -->
+        Descripción de las actividades realizadas durante la Semana 5.
+        Aquí puedes explicar los temas tratados, objetivos y lo aprendido.
+      </p>
+    </div>
+
+    <!-- Archivos entregados -->
+    <div class="section-card">
+      <div class="section-title">📂 Archivos</div>
+      <ul class="file-list">
+
+        <!-- ✏️ EDITA AQUÍ: agrega tus archivos.
+             El href debe ser la ruta al archivo dentro de la carpeta semana5/
+             Ejemplo: href="semana5/ACTIVIDAD_SEMANA_1.pdf"  -->
+
+        <li class="file-item">
+          <span class="file-icon">📄</span>
+          <span class="file-name">ACTIVIDAD SEMANA 5.pdf</span>
+          <a class="file-link" href="semana5/ACTIVIDAD_SEMANA_1.pdf" target="_blank">Ver archivo</a>
+        </li>
+
+        <!-- Agrega más archivos copiando el bloque <li> de arriba -->
+
+      </ul>
+    </div>
+
+    <!-- Volver -->
+    <div class="back-row">
+      <a class="back-link" href="../index.html">← Volver al Inicio</a>
+    </div>
+
+  </main>
+
+</body>
+</html>
